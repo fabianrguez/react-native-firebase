@@ -9,5 +9,6 @@ const firebaseConfig = {
   messagingSenderId: "298176719667"
 };
 
-export const _firebase = firebase.initializeApp(firebaseConfig);
+const _firebase = firebase.initializeApp(firebaseConfig);
 export const firebaseDatabase = _firebase.database();
+export const firebaseAuth = _firebase.auth();
