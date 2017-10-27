@@ -1,16 +1,17 @@
 import React from "react";
 import {StyleSheet, View, TextInput, TouchableOpacity, Text, StatusBar} from 'react-native';
-import {firebaseAuth} from "../config/FirebaseConfig";
+import {firebaseAuth} from "../config/firebaseConfig";
 
 export default class LoginForm extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
       password: '',
       message: '',
-      loginFail: false
+      loginFail: false,
+      loading: false
     }
   }
 
@@ -22,14 +23,17 @@ export default class LoginForm extends React.Component {
   }
 
   _authenticateUser() {
+    this.setState({loginFail: false});
     firebaseAuth.signInWithEmailAndPassword(this.state.email, this.state.password)
       .then(() => {
-        this.setState({loginFail: false})
+        const { navigate } = this.props.navigation;
+        this.setState({loginFail: false});
+        navigate('Movies')
       })
       .catch((error) => {
-        this.setState({loginFail: true})
-        this.setState({message: error.message})
-      })
+        this.setState({loginFail: true});
+        this.setState({message: error.message});
+      });
   }
 
   render() {

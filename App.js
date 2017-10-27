@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from "./src/components/Login";
+import {Router} from "./src/config/router";
 
 export default class App extends React.Component {
   render() {
     return (
-        <Login/>
+      <Router/>
     );
   }
 }

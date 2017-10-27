@@ -4,14 +4,18 @@ import LoginForm from "./LoginForm";
 
 export default class Login extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return(
       <KeyboardAvoidingView behavior={'padding'} style={styles.container}>
         <View style={styles.logoContainer}>
           <Text style={styles.title}>Login</Text>
         </View>
-        <View style={styles.formContainer}>
-          <LoginForm/>
+        <View>
+          <LoginForm navigation={this.props.navigation}/>
         </View>
       </KeyboardAvoidingView>
 
