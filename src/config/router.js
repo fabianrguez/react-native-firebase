@@ -3,6 +3,7 @@ import Login from '../components/Login';
 import {StackNavigator, TabNavigator} from 'react-navigation';
 import Movies from "../components/Movies";
 import ToDo from "../components/ToDo";
+import AddModal from "../components/AddModal";
 
 const Tab = TabNavigator({
   Movies: {
@@ -48,6 +49,9 @@ export const Router = StackNavigator({
   },
   Tab: {
     screen: TabRoute
+  },
+  Modal: {
+    screen: AddModal
   }
 }, {
   headerMode: 'none'

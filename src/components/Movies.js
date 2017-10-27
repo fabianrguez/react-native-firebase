@@ -3,7 +3,22 @@ import {View, StyleSheet, Image, StatusBar, Button} from "react-native";
 
 export default class Movies extends React.Component {
 
-  static navigationOptions = {
+  constructor(props) {
+    super(props);
+    const { navigate } = this.props.navigation;
+  }
+
+  static _handleAddButton() {
+    console.log(navigate());
+/*    const { navigate } = this.props.navigation;
+    navigate('AddModal', {name: 'Pepe'})*/
+  }
+
+  _renderButtonAdd() {
+
+  }
+
+  static navigationOptions = ({navigation}) => ({
     title: 'Peliculas',
     tabBarLabel: 'Peliculas',
     tabBarIcon: ({tintColor}) => (
@@ -14,10 +29,11 @@ export default class Movies extends React.Component {
     ),
     headerRight:
       <Button
+        onPress={() => navigation.navigate('Modal')}
         title={'Añadir'}
         style={{marginRight: 20, fontSize: 18, fontWeight: '700'}}
       />
-  };
+  });
 
   render() {
     return (
