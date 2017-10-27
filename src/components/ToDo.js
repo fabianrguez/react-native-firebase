@@ -4,6 +4,7 @@ import {Text, View, StyleSheet, Image, StatusBar} from "react-native";
 export default class ToDo extends React.Component {
 
   static navigationOptions = {
+    title: 'To Do',
     tabBarLabel: 'To-Do',
     tabBarIcon: ({tintColor}) => (
       <Image

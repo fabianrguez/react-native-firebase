@@ -1,16 +1,22 @@
 import React from "react";
-import {Text, View, StyleSheet, Image, StatusBar} from "react-native";
+import {View, StyleSheet, Image, StatusBar, Button} from "react-native";
 
 export default class Movies extends React.Component {
 
   static navigationOptions = {
+    title: 'Peliculas',
     tabBarLabel: 'Peliculas',
     tabBarIcon: ({tintColor}) => (
       <Image
         source={require('../images/movies.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
-    )
+    ),
+    headerRight:
+      <Button
+        title={'Añadir'}
+        style={{marginRight: 20, fontSize: 18, fontWeight: '700'}}
+      />
   };
 
   render() {
@@ -18,7 +24,6 @@ export default class Movies extends React.Component {
       <View style={styles.container}>
         <StatusBar barStyle={'dark-content'}/>
 
-        <Text style={styles.text}>Movies component</Text>
       </View>
     );
   }
@@ -28,10 +33,14 @@ export default class Movies extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center'
   },
-  text: {
-    textAlign: 'center'
+  input: {
+    height: 40,
+    borderRadius: 15,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    marginBottom: 10,
+    color: '#FFF',
+    paddingHorizontal: 10
   }
 });
 

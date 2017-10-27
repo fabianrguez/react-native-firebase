@@ -28,7 +28,7 @@ export default class LoginForm extends React.Component {
       .then(() => {
         const { navigate } = this.props.navigation;
         this.setState({loginFail: false});
-        navigate('Movies')
+        navigate('Tab');
       })
       .catch((error) => {
         this.setState({loginFail: true});
