@@ -5,17 +5,6 @@ export default class Movies extends React.Component {
 
   constructor(props) {
     super(props);
-    const { navigate } = this.props.navigation;
-  }
-
-  static _handleAddButton() {
-    console.log(navigate());
-/*    const { navigate } = this.props.navigation;
-    navigate('AddModal', {name: 'Pepe'})*/
-  }
-
-  _renderButtonAdd() {
-
   }
 
   static navigationOptions = ({navigation}) => ({
