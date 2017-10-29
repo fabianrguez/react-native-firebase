@@ -18,7 +18,7 @@ export default class Movies extends React.Component {
     ),
     headerRight:
       <Button
-        onPress={() => navigation.navigate('Modal')}
+        onPress={() => navigation.navigate('Modal', {title: 'Añade peliculas'})}
         title={'Añadir'}
         style={{marginRight: 20, fontSize: 18, fontWeight: '700'}}
       />

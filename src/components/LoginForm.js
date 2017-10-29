@@ -12,7 +12,7 @@ export default class LoginForm extends React.Component {
       message: '',
       loginFail: false,
       loading: false
-    }
+    };
   }
 
   _renderResult() {
