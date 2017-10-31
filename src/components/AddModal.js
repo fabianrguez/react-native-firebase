@@ -1,10 +1,23 @@
 import React from "react";
-import {Text, View, StyleSheet, TextInput} from "react-native";
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from "react-native";
+import {firebaseDatabase} from "../config/firebaseConfig";
 
 export default class AddModal extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      movieName: ''
+    }
+  }
+
+  _saveMovie() {
+    if (this.state.movieName !== '') {
+      firebaseDatabase.ref('/movies').push({
+        name: this.state.movieName
+      });
+      this.props.navigation.goBack();
+    }
   }
 
   render() {
@@ -14,7 +27,15 @@ export default class AddModal extends React.Component {
         <TextInput
           style={styles.input}
           placeholder={'Titulo'}
+          value={this.state.movieName}
+          onChangeText={(name) => this.setState({movieName: name})}
         />
+        <TouchableOpacity
+          style={styles.buttonContainer}
+          onPress={() => this._saveMovie()}
+        >
+          <Text style={styles.buttonText}>Añadir</Text>
+        </TouchableOpacity>
       </View>
     );
 
@@ -39,5 +60,14 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: '#000',
     paddingHorizontal: 10
+  },  buttonContainer: {
+    backgroundColor: '#2980b9',
+    paddingVertical: 15,
+    borderRadius: 15
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFF',
+    fontWeight: '700'
   }
 });

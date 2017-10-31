@@ -1,10 +1,23 @@
 import React from "react";
-import {View, StyleSheet, Image, StatusBar, Button} from "react-native";
+import {View, StyleSheet, Image, StatusBar, Button, FlatList, Text} from "react-native";
+import {firebaseDatabase} from "../config/firebaseConfig";
+import * as _ from 'lodash';
 
 export default class Movies extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      movies: []
+    };
+
+    this.movies = [];
+  }
+
+  componentDidMount() {
+    firebaseDatabase.ref('movies').on('value', (data) => {
+      this.setState({movies: _.values(data.val())});
+    });
   }
 
   static navigationOptions = ({navigation}) => ({
@@ -18,17 +31,29 @@ export default class Movies extends React.Component {
     ),
     headerRight:
       <Button
-        onPress={() => navigation.navigate('Modal', {title: 'Añade peliculas'})}
+        onPress={() => navigation.navigate('Modal', {title: 'Añade peliculas  '})}
         title={'Añadir'}
         style={{marginRight: 20, fontSize: 18, fontWeight: '700'}}
       />
   });
 
+  _renderMovie(movie) {
+    return(
+      <View style={{marginTop: 40, justifyContent: 'center'}}>
+        <Text>{movie.name}</Text>
+      </View>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
         <StatusBar barStyle={'dark-content'}/>
-
+        <FlatList
+          data={this.state.movies}
+          renderItem={({item}) => this._renderMovie(item)}
+          keyExtractor={(item, index) => index}
+        />
       </View>
     );
   }
@@ -37,7 +62,7 @@ export default class Movies extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   input: {
     height: 40,
@@ -48,4 +73,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10
   }
 });
-
