@@ -3,11 +3,33 @@ import {StyleSheet} from 'react-native';
 import {Card, CardAction, CardContent, CardTitle} from 'react-native-material-cards';
 import LikeButton from './LikeButton';
 import DeleteButton from './DeleteButton';
+import {CheckedButton} from './CheckedButton';
 
 export default class CardView extends React.Component {
 
   constructor(props) {
     super(props);
+  }
+
+  _renderLikeButton() {
+    if (this.props.likeButton) {
+      return(
+        <LikeButton
+          onPress={this.props.onLikePress()}
+          item={this.props.item}
+        />
+      );
+    }
+  }
+
+  _renderCheckButton() {
+    if (this.props.checkButton) {
+      return(
+        <CheckedButton
+          item={this.props.item}
+        />
+      );
+    }
   }
 
   render() {
@@ -26,10 +48,8 @@ export default class CardView extends React.Component {
           inColumn={false}
           style={styles.cardAction}>
 
-          <LikeButton
-            onPress={this.props.onLikePress()}
-            item={this.props.item}
-          />
+          {this._renderLikeButton()}
+          {this._renderCheckButton()}
 
           <DeleteButton
             item={this.props.item}
