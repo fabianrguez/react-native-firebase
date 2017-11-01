@@ -1,5 +1,5 @@
-import React from "react";
-import {Text, View, StyleSheet, Image, StatusBar} from "react-native";
+import React from 'react';
+import {Text, View, StyleSheet, Image, StatusBar} from 'react-native';
 
 export default class ToDo extends React.Component {
 

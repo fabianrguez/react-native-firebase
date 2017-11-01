@@ -1,21 +1,26 @@
-import React from "react";
-import {Text, View, StyleSheet, TextInput, TouchableOpacity} from "react-native";
-import {firebaseDatabase} from "../config/firebaseConfig";
+import React from 'react';
+import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {firebaseDatabase, firebaseAuth} from '../config/firebaseConfig';
 
 export default class AddModal extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      movieName: ''
+      movieName: '',
+      itemKey: ''
     }
   }
 
   _saveMovie() {
     if (this.state.movieName !== '') {
-      firebaseDatabase.ref('/movies').push({
+      const key = firebaseDatabase.ref().child('movies').push().key;
+      firebaseDatabase.ref('/movies/' + key).set({
+        key: key,
         name: this.state.movieName,
-        liked: false
+        liked: false,
+        user: firebaseAuth.currentUser.email,
+        date: new Date().toLocaleDateString()
       });
       this.props.navigation.goBack();
     }

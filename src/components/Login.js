@@ -1,6 +1,6 @@
-import {View, StyleSheet, Text, KeyboardAvoidingView} from "react-native";
-import React from "react";
-import LoginForm from "./LoginForm";
+import {View, StyleSheet, Text, KeyboardAvoidingView} from 'react-native';
+import React from 'react';
+import LoginForm from './LoginForm';
 
 export default class Login extends React.Component {
 

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import {
   View, StyleSheet, Image, StatusBar, Button, FlatList, Text, TouchableWithoutFeedback
-} from "react-native";
-import {firebaseDatabase} from "../config/firebaseConfig";
+} from 'react-native';
+import {firebaseDatabase} from '../config/firebaseConfig';
 import * as _ from 'lodash';
-import CardView from "./CardView";
+import CardView from './CardView';
 
 export default class Movies extends React.Component {
 
@@ -16,7 +16,7 @@ export default class Movies extends React.Component {
   }
 
   componentDidMount() {
-    firebaseDatabase.ref('movies').on('value', (data) => {
+    firebaseDatabase.ref().child('movies').on('value', (data) => {
       this.setState({movies: _.values(data.val())});
     });
   }
@@ -38,10 +38,22 @@ export default class Movies extends React.Component {
       />
   });
 
+  _likeButtonPress(movie) {
+    firebaseDatabase.ref().child('movies/' + movie.key).update({
+      liked: !movie.liked
+    });
+  }
+
+  _deleteButtonPress(key) {
+    firebaseDatabase.ref().child('movies/' + key).remove();
+  }
+
   _renderMovie(movie) {
     return(
       <CardView
-        title={movie.name}
+        item={movie}
+        onLikePress={() => this._likeButtonPress.bind(this)}
+        onDeletePress={() => this._deleteButtonPress.bind(this)}
       />
     );
   }

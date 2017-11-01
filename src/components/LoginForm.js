@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 import {StyleSheet, View, TextInput, TouchableOpacity, Text, StatusBar} from 'react-native';
-import {firebaseAuth} from "../config/firebaseConfig";
+import {firebaseAuth} from '../config/firebaseConfig';
 
 export default class LoginForm extends React.Component {
 
