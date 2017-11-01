@@ -1,7 +1,10 @@
 import React from "react";
-import {View, StyleSheet, Image, StatusBar, Button, FlatList, Text} from "react-native";
+import {
+  View, StyleSheet, Image, StatusBar, Button, FlatList, Text, TouchableWithoutFeedback
+} from "react-native";
 import {firebaseDatabase} from "../config/firebaseConfig";
 import * as _ from 'lodash';
+import CardView from "./CardView";
 
 export default class Movies extends React.Component {
 
@@ -10,8 +13,6 @@ export default class Movies extends React.Component {
     this.state = {
       movies: []
     };
-
-    this.movies = [];
   }
 
   componentDidMount() {
@@ -39,9 +40,9 @@ export default class Movies extends React.Component {
 
   _renderMovie(movie) {
     return(
-      <View style={{marginTop: 40, justifyContent: 'center'}}>
-        <Text>{movie.name}</Text>
-      </View>
+      <CardView
+        title={movie.name}
+      />
     );
   }
 

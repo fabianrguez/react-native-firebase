@@ -14,7 +14,8 @@ export default class AddModal extends React.Component {
   _saveMovie() {
     if (this.state.movieName !== '') {
       firebaseDatabase.ref('/movies').push({
-        name: this.state.movieName
+        name: this.state.movieName,
+        liked: false
       });
       this.props.navigation.goBack();
     }
