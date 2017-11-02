@@ -13,6 +13,9 @@ export default class Movies extends React.Component {
     this.state = {
       movies: []
     };
+
+    this.likeButtonPress = this._likeButtonPress.bind(this);
+    this.deleteButtonPress = this._deleteButtonPress.bind(this);
   }
 
   componentDidMount() {
@@ -53,8 +56,8 @@ export default class Movies extends React.Component {
       <CardView
         item={movie}
         likeButton={true}
-        onLikePress={() => this._likeButtonPress.bind(this)}
-        onDeletePress={() => this._deleteButtonPress.bind(this)}
+        onLikePress={this.likeButtonPress}
+        onDeletePress={this.deleteButtonPress}
       />
     );
   }

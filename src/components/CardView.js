@@ -15,7 +15,7 @@ export default class CardView extends React.Component {
     if (this.props.likeButton) {
       return(
         <LikeButton
-          onPress={this.props.onLikePress()}
+          onPress={this.props.onLikePress}
           item={this.props.item}
         />
       );
@@ -53,7 +53,7 @@ export default class CardView extends React.Component {
 
           <DeleteButton
             item={this.props.item}
-            onPress={this.props.onDeletePress()}
+            onPress={this.props.onDeletePress}
           />
         </CardAction>
       </Card>
