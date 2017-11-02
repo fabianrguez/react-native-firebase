@@ -8,7 +8,7 @@ export default class ToDo extends React.Component {
     tabBarLabel: 'To-Do',
     tabBarIcon: ({tintColor}) => (
       <Image
-        source={require('../images/list.png')}
+        source={require('../../images/list.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     )

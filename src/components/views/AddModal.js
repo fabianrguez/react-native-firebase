@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import {firebaseDatabase, firebaseAuth} from '../config/firebaseConfig';
+import {firebaseDatabase, firebaseAuth} from '../../config/firebaseConfig';
 
 export default class AddModal extends React.Component {
 
@@ -34,6 +34,7 @@ export default class AddModal extends React.Component {
           style={styles.input}
           placeholder={'Titulo'}
           value={this.state.movieName}
+          autoCorrect={false}
           onChangeText={(name) => this.setState({movieName: name})}
         />
         <TouchableOpacity

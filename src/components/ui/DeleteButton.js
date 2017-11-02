@@ -14,7 +14,7 @@ export default class DeleteButton extends React.Component {
       >
         <Image
           style={styles.image}
-          source={require('../images/trash.png')}
+          source={require('../../images/trash.png')}
         />
       </TouchableOpacity>
     );

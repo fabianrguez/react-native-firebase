@@ -1,8 +1,6 @@
 import React from 'react';
-import {
-  View, StyleSheet, Image, StatusBar, Button, FlatList, Text, TouchableWithoutFeedback
-} from 'react-native';
-import {firebaseDatabase} from '../config/firebaseConfig';
+import {View, StyleSheet, Image, StatusBar, Button, FlatList} from 'react-native';
+import {firebaseDatabase} from '../../config/firebaseConfig';
 import * as _ from 'lodash';
 import CardView from './CardView';
 
@@ -29,7 +27,7 @@ export default class Movies extends React.Component {
     tabBarLabel: 'Peliculas',
     tabBarIcon: ({tintColor}) => (
       <Image
-        source={require('../images/movies.png')}
+        source={require('../../images/movies.png')}
         style={[styles.icon, {tintColor: tintColor}]}
       />
     ),

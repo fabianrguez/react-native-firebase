@@ -1,9 +1,9 @@
 import React from 'react';
-import Login from '../components/Login';
+import Login from '../components/views/Login';
 import {StackNavigator, TabNavigator} from 'react-navigation';
-import Movies from '../components/Movies';
-import ToDo from '../components/ToDo';
-import AddModal from '../components/AddModal';
+import Movies from '../components/views/Movies';
+import ToDo from '../components/views/ToDo';
+import AddModal from '../components/views/AddModal';
 
 const Tab = TabNavigator({
   Movies: {

@@ -5,8 +5,8 @@ export default class LikeButton extends React.Component {
 
   constructor(props) {
     super(props);
-    this.blackHeart = require('../images/heart-black.png');
-    this.redHeart = require('../images/heart-red.png');
+    this.blackHeart = require('../../images/heart-black.png');
+    this.redHeart = require('../../images/heart-red.png');
   }
 
   _imageRendered() {

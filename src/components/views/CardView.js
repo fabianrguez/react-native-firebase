@@ -1,9 +1,9 @@
 import React from 'react';
 import {StyleSheet} from 'react-native';
 import {Card, CardAction, CardContent, CardTitle} from 'react-native-material-cards';
-import LikeButton from './LikeButton';
-import DeleteButton from './DeleteButton';
-import {CheckedButton} from './CheckedButton';
+import LikeButton from '../ui/LikeButton';
+import DeleteButton from '../ui/DeleteButton';
+import {CheckedButton} from '../ui/CheckedButton';
 
 export default class CardView extends React.Component {
 
