@@ -7,22 +7,7 @@ export default class AddModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movieName: '',
-      itemKey: ''
-    }
-  }
-
-  _saveMovie() {
-    if (this.state.movieName !== '') {
-      const key = firebaseDatabase.ref().child('movies').push().key;
-      firebaseDatabase.ref('/movies/' + key).set({
-        key: key,
-        name: this.state.movieName,
-        liked: false,
-        user: firebaseAuth.currentUser.email,
-        date: new Date().toLocaleDateString()
-      });
-      this.props.navigation.goBack();
+      movieName: ''
     }
   }
 
@@ -39,7 +24,10 @@ export default class AddModal extends React.Component {
         />
         <TouchableOpacity
           style={styles.buttonContainer}
-          onPress={() => this._saveMovie()}
+          onPress={() => {
+            this.props.navigation.state.params.onPressSave(this.state.movieName);
+            this.props.navigation.goBack();
+          }}
         >
           <Text style={styles.buttonText}>Añadir</Text>
         </TouchableOpacity>

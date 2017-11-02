@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet, Image, StatusBar, Button, FlatList} from 'react-native';
-import {firebaseDatabase} from '../../config/firebaseConfig';
+import {firebaseDatabase, firebaseAuth} from '../../config/firebaseConfig';
 import * as _ from 'lodash';
 import CardView from './CardView';
 
@@ -33,7 +33,7 @@ export default class Movies extends React.Component {
     ),
     headerRight:
       <Button
-        onPress={() => navigation.navigate('Modal', {title: 'Añade peliculas  '})}
+        onPress={() => navigation.navigate('Modal', {title: 'Añade peliculas', onPressSave: Movies._pressSaveButton.bind(this)})}
         title={'Añadir'}
         style={{marginRight: 20, fontSize: 18, fontWeight: '700'}}
       />
@@ -58,6 +58,19 @@ export default class Movies extends React.Component {
         onDeletePress={this.deleteButtonPress}
       />
     );
+  }
+
+  static _pressSaveButton(movieName) {
+    if (movieName !== '') {
+      const key = firebaseDatabase.ref().child('movies').push().key;
+      firebaseDatabase.ref('/movies/' + key).set({
+        key: key,
+        name: movieName,
+        liked: false,
+        user: firebaseAuth.currentUser.email,
+        date: new Date().toLocaleDateString()
+      });
+    }
   }
 
   render() {
