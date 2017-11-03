@@ -1,13 +1,12 @@
 import React from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-import {firebaseDatabase, firebaseAuth} from '../../config/firebaseConfig';
 
 export default class AddModal extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      movieName: ''
+      value: ''
     }
   }
 
@@ -18,14 +17,14 @@ export default class AddModal extends React.Component {
         <TextInput
           style={styles.input}
           placeholder={'Titulo'}
-          value={this.state.movieName}
+          value={this.state.value}
           autoCorrect={false}
-          onChangeText={(name) => this.setState({movieName: name})}
+          onChangeText={(name) => this.setState({value: name})}
         />
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => {
-            this.props.navigation.state.params.onPressSave(this.state.movieName);
+            this.props.navigation.state.params.onPressSave(this.state.value);
             this.props.navigation.goBack();
           }}
         >

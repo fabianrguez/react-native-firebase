@@ -26,6 +26,7 @@ export default class CardView extends React.Component {
     if (this.props.checkButton) {
       return(
         <CheckedButton
+          onPress={this.props.onCheckPress}
           item={this.props.item}
         />
       );

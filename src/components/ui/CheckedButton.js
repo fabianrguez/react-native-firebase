@@ -7,7 +7,9 @@ export const CheckedButton = (props) => {
     : require('../../images/checked-black.png');
 
     return(
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => props.onPress(props.item)}
+      >
         <Image
           source={imageSource}
         />
